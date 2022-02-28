@@ -63,7 +63,6 @@ protocol ReusableView2: AnyObject {
         name.translatesAutoresizingMaskIntoConstraints = false
         infoLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        infoLabel.frame = CGRect(x: 0.01, y: 0.2 * , width: 0.2 * , height: <#T##CGFloat#>)
 
         // Contentview Constraintleri
         NSLayoutConstraint.activate([
