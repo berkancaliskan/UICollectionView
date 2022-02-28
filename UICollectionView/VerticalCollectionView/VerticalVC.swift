@@ -8,19 +8,14 @@
 import UIKit
 
 class VerticalVC: UIViewController {
-
-
+    
+    
         let collectionView: UICollectionView = {
         let viewLayout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: viewLayout)
         collectionView.backgroundColor = .clear
         return collectionView
     }()
-
-    private enum LayoutConstant {
-        static let spacing: CGFloat = 16.0
-        static let itemHeight: CGFloat = 300.0
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,26 +35,19 @@ class VerticalVC: UIViewController {
     }
 
      func setupLayouts() {
+         
+        let screenH = view.frame.size.height
+        let screenW = view.frame.size.width
+         
+  
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-
-        // CollectionView Constraint
-        NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            collectionView.leftAnchor.constraint(equalTo: view.leftAnchor),
-            collectionView.rightAnchor.constraint(equalTo: view.rightAnchor)
-        ])
+        collectionView.frame = CGRect(x: 0 * screenW,
+                                      y: 0.03 * screenH,
+                                      width: 1 * screenW ,
+                                      height: 1 * screenH)
+    
     }
 
-     
-
-    init() {
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
 
 }
 //   Cellerin kaç tane olacağını profile boyuna göre belirliyoruz.
@@ -90,17 +78,18 @@ extension VerticalVC: UICollectionViewDataSource {
     }
 }
 
+// Collection view için görünümü özelleştirmek için extension kullandık.
 extension VerticalVC: UICollectionViewDelegateFlowLayout {
     
 //   Cellerin boyutlarını belirliyoruz.
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        let width = itemWidth(for: view.frame.width, spacing: LayoutConstant.spacing)
+        let width = itemWidth(for: view.frame.width, spacing: 16.0)
 
-        return CGSize(width: width, height: LayoutConstant.itemHeight)
+        return CGSize(width: width, height: 300)
     }
 
+//    İtemlerin arasındaki boşluğu ve itemlerin width'i belirten fonksiyon.
     func itemWidth(for width: CGFloat, spacing: CGFloat) -> CGFloat {
         let itemsInRow: CGFloat = 2
 
@@ -109,18 +98,15 @@ extension VerticalVC: UICollectionViewDelegateFlowLayout {
 
         return floor(finalWidth)
     }
-
+//    İtemlerin view içindeki görünümü yani alttan üstten ve yanlardan uzaklığını veren fonksiyon.
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: LayoutConstant.spacing, left: LayoutConstant.spacing, bottom: LayoutConstant.spacing, right: LayoutConstant.spacing)
+        return UIEdgeInsets(top: 16.0,
+                            left: 16.0,
+                            bottom: 76,
+                            right: 16.0)
     }
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return LayoutConstant.spacing
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return LayoutConstant.spacing
-    }
+// Arkaplanı Gradient yapmak için kullandığım fonsiyon.
     func setGradientBackground() {
         let colorTop =  UIColor(red: 0.78, green: 0.47, blue: 0.98, alpha: 1.00).cgColor
         let colorBottom = UIColor(red: 0.64, green: 0.82, blue: 0.99, alpha: 1.00).cgColor

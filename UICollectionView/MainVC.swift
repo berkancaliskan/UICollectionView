@@ -44,27 +44,12 @@ class MainVC: UIViewController {
         
       
         
-        let onboadingImg = UIImageView()
-        onboadingImg.image = UIImage(named: "swift-logo")
-//        onboadingImg.frame = CGRect(x: 0.28 * screenWidth, y: 0.2 * screenHeight, width: 0.44 * screenWidth, height: 0.21 * screenHeight)
+        let swiftImg = UIImageView()
+        swiftImg.image = UIImage(named: "swift-logo")
+        swiftImg.frame = CGRect(x: screenWidth * 0.3, y: screenHeight * 0.22 ,width: screenWidth * 0.4, height: screenWidth * 0.4)
+        view.addSubview(swiftImg)
         
-        onboadingImg.translatesAutoresizingMaskIntoConstraints = false
-        onboadingImg.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(onboadingImg)
-        
-        NSLayoutConstraint.activate([
-            
-            onboadingImg.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            onboadingImg.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -120.0),
-            onboadingImg.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 120.0),
-            onboadingImg.topAnchor.constraint(equalTo: view.topAnchor, constant: 190 ),
-            onboadingImg.heightAnchor.constraint(equalTo: onboadingImg.widthAnchor, multiplier: 1)
-        ])
 
-        
-     
-        
-   
         let verticalButton = UIButton()
         verticalButton.backgroundColor = .systemOrange
         verticalButton.setTitle(NSLocalizedString("Vertical", comment: ""), for: UIControl.State.normal)

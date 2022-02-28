@@ -15,8 +15,6 @@ struct Profile {
     let profession: String
 }
 
-
-
 var profiles: [Profile] = []
 
 func populateProfiles() {

@@ -11,10 +11,10 @@ protocol ReusableView2: AnyObject {
     static var identifier: String { get }
 }
 
-final class PlanetCell: UICollectionViewCell {
+ class PlanetCell: UICollectionViewCell {
     
 
-    private let planetImageView: UIImageView = {
+        let planetImageView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.contentMode = .scaleAspectFit
 
@@ -62,6 +62,8 @@ final class PlanetCell: UICollectionViewCell {
         planetImageView.translatesAutoresizingMaskIntoConstraints = false
         name.translatesAutoresizingMaskIntoConstraints = false
         infoLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        infoLabel.frame = CGRect(x: 0.01, y: 0.2 * , width: 0.2 * , height: <#T##CGFloat#>)
 
         // Contentview Constraintleri
         NSLayoutConstraint.activate([
@@ -82,7 +84,7 @@ final class PlanetCell: UICollectionViewCell {
             infoLabel.topAnchor.constraint(equalTo: name.bottomAnchor, constant: 5),
             infoLabel.heightAnchor.constraint(equalToConstant: 250),
             infoLabel.widthAnchor.constraint(equalToConstant: 100),
-            
+
         ])
         
 

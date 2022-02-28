@@ -8,15 +8,31 @@
 import UIKit
 
 class HorizontalVC: UIViewController {
+    
 
+     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         createCollectionView()
         setGradientBackground()
-        
+        createLabel()
 
+    }
+
+    func createLabel(){
         
+        let title = UILabel()
+        
+        let screenH = view.frame.size.height
+        let screenW = view.frame.size.width
+        title.text = NSLocalizedString("🌍 Gezegenler 🪐", comment:"")
+        title.textAlignment = .center
+        title.textColor = UIColor.black
+        title.font = GBookBig
+        title.numberOfLines = 0
+        title.frame = CGRect(x: 0.1 * screenW, y: 0.047 * screenH, width: 0.8 * screenW, height: 0.1 * screenH)
+        view.addSubview(title)
     }
     
     func createCollectionView(){
@@ -26,31 +42,27 @@ class HorizontalVC: UIViewController {
     layout.scrollDirection = .horizontal
     
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-    
     collectionView.register(PlanetCell.self, forCellWithReuseIdentifier: PlanetCell.identifier)
-    
     collectionView.backgroundColor = .clear
-    collectionView.translatesAutoresizingMaskIntoConstraints = false
     collectionView.layer.borderWidth = 1
     collectionView.layer.borderColor = UIColor.lightGray.cgColor
-//        collectionView.layer.cornerRadius = 40
-    
-    view.addSubview(collectionView)
-//      CollectionView Constraint
-    collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 110).isActive = true
-    collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 2).isActive = true
-    collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -2).isActive = true
-    collectionView.heightAnchor.constraint(equalToConstant: 600).isActive = true
 
-    collectionView.dataSource = self
     
+ 
+//      CollectionView Frame
+        
+        let screenH = view.frame.size.height
+        let screenW = view.frame.size.width
+        
+        collectionView.frame = CGRect(x:      0.02 * screenW,
+                                      y:      0.15 * screenH,
+                                      width:  0.98 * screenW,
+                                      height: 0.60 * screenH)
+
+        collectionView.dataSource = self
+        view.addSubview(collectionView)
     }
     
-    private enum LayoutConstant {
-        static let spacing: CGFloat = 16.0
-        static let itemHeight: CGFloat = 300.0
-    }
-
 
 }
 

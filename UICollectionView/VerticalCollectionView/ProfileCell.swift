@@ -11,22 +11,10 @@ protocol ReusableView: AnyObject {
     static var identifier: String { get }
 }
 
-final class ProfileCell: UICollectionViewCell {
+class ProfileCell: UICollectionViewCell {
 
-    private enum Constants {
-        // MARK: contentView layout constants
-        static let contentViewCornerRadius: CGFloat = 14.0
 
-        // MARK: profileImageView layout constants
-        static let imageHeight: CGFloat = 195.0
-
-        // MARK: Generic layout constants
-        static let verticalSpacing: CGFloat = 8.0
-        static let horizontalPadding: CGFloat = 16.0
-        static let profileDescriptionVerticalPadding: CGFloat = 8.0
-    }
-
-    private let profileImageView: UIImageView = {
+   let profileImageView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.contentMode = .scaleAspectFill
         return imageView
@@ -66,7 +54,7 @@ final class ProfileCell: UICollectionViewCell {
 
     private func setupViews() {
         contentView.clipsToBounds = true
-        contentView.layer.cornerRadius = Constants.contentViewCornerRadius
+        contentView.layer.cornerRadius = 14
         contentView.backgroundColor = .clear
 
         contentView.addSubview(profileImageView)
@@ -86,28 +74,28 @@ final class ProfileCell: UICollectionViewCell {
             profileImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             profileImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             profileImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            profileImageView.heightAnchor.constraint(equalToConstant: Constants.imageHeight)
+            profileImageView.heightAnchor.constraint(equalToConstant: 195.0)
         ])
 
         // Name Constraints
         NSLayoutConstraint.activate([
-            name.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Constants.horizontalPadding),
-            name.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Constants.horizontalPadding),
+            name.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            name.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             name.topAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: -2)
             
         ])
 
         // Location Constraints
         NSLayoutConstraint.activate([
-            locationLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Constants.horizontalPadding),
-            locationLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Constants.horizontalPadding),
+            locationLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            locationLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             locationLabel.bottomAnchor.constraint(equalTo: name.bottomAnchor, constant: -10)
         ])
 
         // Profession Constraints
         NSLayoutConstraint.activate([
-            professionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Constants.horizontalPadding),
-            professionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Constants.horizontalPadding),
+            professionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            professionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             professionLabel.topAnchor.constraint(equalTo: locationLabel.bottomAnchor, constant: 5),
             professionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
         ])
