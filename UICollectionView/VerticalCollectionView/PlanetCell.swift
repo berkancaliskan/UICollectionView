@@ -7,8 +7,7 @@
 
 import UIKit
 
-//Celleri yeniden kullanabilmek için protokol ve extension kullandık.
-
+//Celleri çağırabilmek için protokol ve extension kullandık.
 protocol ReusableView2: AnyObject {
     static var identifier: String { get }
 }
@@ -86,9 +85,7 @@ protocol ReusableView2: AnyObject {
             infoLabel.widthAnchor.constraint(equalToConstant: 100),
 
         ])
-        
-
-        
+  
     }
 
     required init?(coder: NSCoder) {
@@ -102,7 +99,6 @@ protocol ReusableView2: AnyObject {
     
     }
 }
-
 
 extension PlanetCell: ReusableView2 {
     static var identifier: String {

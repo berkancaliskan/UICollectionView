@@ -9,19 +9,17 @@ import UIKit
 
 class HorizontalVC: UIViewController, UICollectionViewDataSource {
     
-    
     //   Cellerin kaç tane olacağını profile boyuna göre belirliyoruz.
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return planets.count
     }
-    
+    //   Cellere içeriğinde ne olacağını yazıyoruz.
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PlanetCell.identifier, for: indexPath) as! PlanetCell
         
         let planet = planets[indexPath.row]
         cell.setup(with: planet)
         cell.contentView.backgroundColor = UIColor(red: 0.76, green: 0.87, blue: 1.00, alpha: 1.00)
- 
         return cell
     }
     
