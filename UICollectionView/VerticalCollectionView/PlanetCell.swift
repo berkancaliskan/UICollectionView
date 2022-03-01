@@ -7,12 +7,13 @@
 
 import UIKit
 
+//Celleri yeniden kullanabilmek için protokol ve extension kullandık.
+
 protocol ReusableView2: AnyObject {
     static var identifier: String { get }
 }
 
  class PlanetCell: UICollectionViewCell {
-    
 
         let planetImageView: UIImageView = {
         let imageView = UIImageView(frame: .zero)

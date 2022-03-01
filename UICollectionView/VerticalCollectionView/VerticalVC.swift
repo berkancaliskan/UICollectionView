@@ -7,9 +7,9 @@
 
 import UIKit
 
-class VerticalVC: UIViewController {
+class VerticalVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
-    
+//    CollectionView oluşturuyoruz.
         let collectionView: UICollectionView = {
         let viewLayout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: viewLayout)
@@ -17,42 +17,7 @@ class VerticalVC: UIViewController {
         return collectionView
     }()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupViews()
-        setupLayouts()
-        populateProfiles()
-        collectionView.reloadData()
-        setGradientBackground()
-    }
-
-   func setupViews() {
-        
-        view.addSubview(collectionView)
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.register(ProfileCell.self, forCellWithReuseIdentifier: ProfileCell.identifier)
-    }
-
-     func setupLayouts() {
-         
-        let screenH = view.frame.size.height
-        let screenW = view.frame.size.width
-         
-  
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.frame = CGRect(x: 0 * screenW,
-                                      y: 0.03 * screenH,
-                                      width: 1 * screenW ,
-                                      height: 1 * screenH)
-    
-    }
-
-
-}
 //   Cellerin kaç tane olacağını profile boyuna göre belirliyoruz.
-
-extension VerticalVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return profiles.count
     }
@@ -76,10 +41,7 @@ extension VerticalVC: UICollectionViewDataSource {
         cell.contentView.backgroundColor = UIColor(red: 0.76, green: 0.87, blue: 1.00, alpha: 1.00)
         return cell
     }
-}
-
-// Collection view için görünümü özelleştirmek için extension kullandık.
-extension VerticalVC: UICollectionViewDelegateFlowLayout {
+    
     
 //   Cellerin boyutlarını belirliyoruz.
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -117,4 +79,41 @@ extension VerticalVC: UICollectionViewDelegateFlowLayout {
         gradientLayer.frame = self.view.bounds
         self.view.layer.insertSublayer(gradientLayer, at:0)
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupViews()
+        setupLayouts()
+        populateProfiles()
+        collectionView.reloadData()
+        setGradientBackground()
+    }
+
+   func setupViews() {
+        
+        view.addSubview(collectionView)
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.register(ProfileCell.self, forCellWithReuseIdentifier: ProfileCell.identifier)
+    }
+
+     func setupLayouts() {
+         
+        let screenH = view.frame.size.height
+        let screenW = view.frame.size.width
+         
+  
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.frame = CGRect(x: 0 * screenW,
+                                      y: 0.03 * screenH,
+                                      width: 1 * screenW ,
+                                      height: 1 * screenH)
+    
+    }
+
+
 }
+
+
+
+

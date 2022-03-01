@@ -7,6 +7,7 @@
 
 import UIKit
 
+//Celleri yeniden kullanabilmek için protokol ve extension kullandık.
 protocol ReusableView: AnyObject {
     static var identifier: String { get }
 }
