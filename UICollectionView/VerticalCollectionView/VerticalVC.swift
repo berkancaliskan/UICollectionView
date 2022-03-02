@@ -34,7 +34,7 @@ class VerticalVC: UIViewController, UICollectionViewDataSource, UICollectionView
     }
 //   Cellere içeriğinde ne olacağını yazıyoruz.
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileCell.identifier, for: indexPath) as! ProfileCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileID.identifier, for: indexPath) as! ProfileCell
 
         let profile = profiles[indexPath.row]
         cell.setup(with: profile)
@@ -94,7 +94,7 @@ class VerticalVC: UIViewController, UICollectionViewDataSource, UICollectionView
         view.addSubview(collectionView)
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.register(ProfileCell.self, forCellWithReuseIdentifier: ProfileCell.identifier)
+        collectionView.register(ProfileCell.self, forCellWithReuseIdentifier: ProfileID.identifier)
     }
 
      func setupLayouts() {

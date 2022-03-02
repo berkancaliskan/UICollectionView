@@ -15,7 +15,7 @@ class HorizontalVC: UIViewController, UICollectionViewDataSource {
     }
     //   Cellere içeriğinde ne olacağını yazıyoruz.
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PlanetCell.identifier, for: indexPath) as! PlanetCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PlanetID.identifier, for: indexPath) as! PlanetCell
         
         let planet = planets[indexPath.row]
         cell.setup(with: planet)
@@ -55,7 +55,7 @@ class HorizontalVC: UIViewController, UICollectionViewDataSource {
     layout.scrollDirection = .horizontal
     
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-    collectionView.register(PlanetCell.self, forCellWithReuseIdentifier: PlanetCell.identifier)
+    collectionView.register(PlanetCell.self, forCellWithReuseIdentifier: PlanetID.identifier)
     collectionView.backgroundColor = .clear
     collectionView.layer.borderWidth = 1
     collectionView.layer.borderColor = UIColor.lightGray.cgColor

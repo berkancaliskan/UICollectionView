@@ -8,8 +8,8 @@
 import UIKit
 
 //Celleri çağırabilmek için protokol ve extension kullandık.
-protocol ReusableView2: AnyObject {
-    static var identifier: String { get }
+struct PlanetID {
+    static var identifier = "cell"
 }
 
  class PlanetCell: UICollectionViewCell {
@@ -100,8 +100,3 @@ protocol ReusableView2: AnyObject {
     }
 }
 
-extension PlanetCell: ReusableView2 {
-    static var identifier: String {
-        return String(describing: self)
-    }
-}

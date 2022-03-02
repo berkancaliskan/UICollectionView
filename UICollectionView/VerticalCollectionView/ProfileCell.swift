@@ -8,8 +8,8 @@
 import UIKit
 
 //Celleri çağırabilmek için protokol ve extension kullandık.
-protocol ReusableView: AnyObject {
-    static var identifier: String { get }
+struct ProfileID {
+    static var identifier = "cell"
 }
 
 class ProfileCell: UICollectionViewCell {
@@ -101,12 +101,5 @@ class ProfileCell: UICollectionViewCell {
         name.text = profile.name
         locationLabel.text = profile.location
         professionLabel.text = profile.profession
-    }
-}
-
-
-extension ProfileCell: ReusableView {
-    static var identifier: String {
-        return String(describing: self)
     }
 }
