@@ -20,7 +20,7 @@ struct PlanetID {
 
         return imageView
     }()
-
+    
     let name: UILabel = {
         let label = UILabel(frame: .zero)
         label.textAlignment = .center
