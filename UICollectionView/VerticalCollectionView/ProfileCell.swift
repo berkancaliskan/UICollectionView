@@ -70,7 +70,6 @@ class ProfileCell: UICollectionViewCell {
         locationLabel.translatesAutoresizingMaskIntoConstraints = false
         professionLabel.translatesAutoresizingMaskIntoConstraints = false
 
-        // ProfileImage Constraints
         NSLayoutConstraint.activate([
             profileImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             profileImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
