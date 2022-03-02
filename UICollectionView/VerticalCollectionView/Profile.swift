@@ -19,7 +19,7 @@ var profiles: [Profile] = []
 
 func populateProfiles() {
     profiles = [
-       Profile(name: "Tuna", location: "NeonApps", imageName: "tuna", profession: "Co-Founder"),
+       Profile(name: "Tuna",location: "NeonApps", imageName: "tuna", profession: "Co-Founder"),
        Profile(name: "Destan", location: "NeonApps", imageName: "destan", profession: "Co-Founder"),
        Profile(name: "Bedri", location: "Development", imageName: "bedri", profession: "iOS Dev."),
        Profile(name: "Berkan", location: "Development", imageName: "berkan", profession: "iOS Dev."),

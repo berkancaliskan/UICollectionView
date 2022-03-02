@@ -59,19 +59,17 @@ class HorizontalVC: UIViewController, UICollectionViewDataSource {
     collectionView.backgroundColor = .clear
     collectionView.layer.borderWidth = 1
     collectionView.layer.borderColor = UIColor.lightGray.cgColor
+            
+    let screenH = view.frame.size.height
+    let screenW = view.frame.size.width
+    
+    collectionView.frame = CGRect(x:      0.02 * screenW,
+                                  y:      0.15 * screenH,
+                                  width:  0.98 * screenW,
+                                  height: 0.60 * screenH)
 
-//      CollectionView Frame
-        
-        let screenH = view.frame.size.height
-        let screenW = view.frame.size.width
-        
-        collectionView.frame = CGRect(x:      0.02 * screenW,
-                                      y:      0.15 * screenH,
-                                      width:  0.98 * screenW,
-                                      height: 0.60 * screenH)
-
-        collectionView.dataSource = self
-        view.addSubview(collectionView)
+    collectionView.dataSource = self
+    view.addSubview(collectionView)
     }
     
 
